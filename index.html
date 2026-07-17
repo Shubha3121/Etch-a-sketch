@@ -1,26 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Etch-a-Sketch</title>
-
+    <title>Etch-a-Sketch | Premium Pixel Art Editor</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for sleek icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
+
 <body>
 
-    <header>
-        <h1>Etch-a-Sketch</h1>
-        <button id="resize-btn">Resize Grid</button>
-        <button id = "clear-btn">Clear</button>
-        <button id = "erase-btn">Erase</button>
-        <input type="color" id="color-picker" value="#000000">
-    </header>
+    <div class="app-container">
+        <!-- Sidebar Controls -->
+        <aside class="sidebar">
+            <header class="app-header">
+                <div class="logo-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                <div>
+                    <h1>Etch-A-Sketch</h1>
+                    <p class="subtitle">Premium Pixel Canvas</p>
+                </div>
+            </header>
 
-    <main>
-        <div id="grid-container"></div>
-    </main>
+            <div class="control-group">
+                <label class="group-title">Colors & Palette</label>
+                <div class="color-picker-wrapper">
+                    <input type="color" id="color-picker" value="#9b5de5">
+                    <span id="color-val-label">#9B5DE5</span>
+                </div>
+                <div class="color-swatches">
+                    <div class="swatch active" style="background-color: #9b5de5;" data-color="#9b5de5"></div>
+                    <div class="swatch" style="background-color: #f15bb5;" data-color="#f15bb5"></div>
+                    <div class="swatch" style="background-color: #ff006e;" data-color="#ff006e"></div>
+                    <div class="swatch" style="background-color: #ff7096;" data-color="#ff7096"></div>
+                    <div class="swatch" style="background-color: #ff9f1c;" data-color="#ff9f1c"></div>
+                    <div class="swatch" style="background-color: #fee440;" data-color="#fee440"></div>
+                    <div class="swatch" style="background-color: #aacc00;" data-color="#aacc00"></div>
+                    <div class="swatch" style="background-color: #38b000;" data-color="#38b000"></div>
+                    <div class="swatch" style="background-color: #00f5d4;" data-color="#00f5d4"></div>
+                    <div class="swatch" style="background-color: #00bbf9;" data-color="#00bbf9"></div>
+                    <div class="swatch" style="background-color: #3a86c8;" data-color="#3a86c8"></div>
+                    <div class="swatch" style="background-color: #8338ec;" data-color="#8338ec"></div>
+                    <div class="swatch" style="background-color: #ffffff;" data-color="#ffffff"></div>
+                    <div class="swatch" style="background-color: #0f172a;" data-color="#0f172a"></div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="group-title">Grid Size (<span id="size-display">16 x 16</span>)</label>
+                <div class="slider-container">
+                    <input type="range" id="size-slider" min="2" max="100" value="16" class="slider">
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="group-title">Drawing Tool</label>
+                <div class="tool-grid">
+                    <button id="btn-pen" class="tool-btn active" data-mode="pen">
+                        <i class="fa-solid fa-pen"></i> Pen
+                    </button>
+                    <button id="btn-rainbow" class="tool-btn" data-mode="rainbow">
+                        <i class="fa-solid fa-rainbow"></i> Rainbow
+                    </button>
+                    <button id="btn-shading" class="tool-btn" data-mode="shading">
+                        <i class="fa-solid fa-circle-half-stroke"></i> Shading
+                    </button>
+                    <button id="btn-eraser" class="tool-btn" data-mode="eraser">
+                        <i class="fa-solid fa-eraser"></i> Eraser
+                    </button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="group-title">Interaction Style</label>
+                <div class="interaction-toggle">
+                    <button id="btn-draw-hover" class="toggle-btn" data-interaction="hover">
+                        <i class="fa-solid fa-hand-pointer"></i> Hover
+                    </button>
+                    <button id="btn-draw-click" class="toggle-btn active" data-interaction="click">
+                        <i class="fa-solid fa-computer-mouse"></i> Click & Drag
+                    </button>
+                </div>
+            </div>
+
+            <div class="control-group action-group">
+                <button id="btn-toggle-grid" class="action-btn secondary">
+                    <i class="fa-solid fa-border-all"></i> Hide Grid Lines
+                </button>
+                <button id="btn-clear" class="action-btn primary">
+                    <i class="fa-solid fa-trash-can"></i> Clear Canvas
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Drawing Area -->
+        <main class="canvas-area">
+            <div class="canvas-wrapper">
+                <div id="grid-container" class="grid-lines-visible"></div>
+            </div>
+        </main>
+    </div>
 
 </body>
+
 </html>
